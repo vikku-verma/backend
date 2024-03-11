@@ -1,15 +1,16 @@
 import Journal from '../models/journalModel.js';
 
 // Get all journals
-export const getAllJournals = async (req, res) => {
-    try {
-      const journals = await Journal.find();
-      const totalCount = await Journal.countDocuments();
-      res.json({ totalCount, journals });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
+export const getAllJournals = async(request,response)=>{
+  try {
+
+    const journals =  await  Journal.find({});
+    response.status(200).json(journals);
+  } catch (error) {
+      response.status(404).json({message: error.message});
+  }
+
+}
   
 
 // Get a single journal by ID
